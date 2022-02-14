@@ -28,7 +28,7 @@ foreach($res as $domain){
 ?>
 </select>
 <br></br>
-<label>Password:</label>
+<label>Password (<?php echo $_GET['username']; ?>):</label>
 <input id="password" name="password" type="password"></input>
 <input type="submit" value="Go to Site Builder"></input>
 <input id="username" name="username" value="<?php echo $_GET['username'] ?>" hidden></input>
