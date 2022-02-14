@@ -1,11 +1,4 @@
 <meta name="robots" content="noindex" />
-<script type="module" async>history.pushState({},{},"sitebuild.php");</script>
-<body oncontextmenu="return false">
-<script>
-document.onkeydown = function(e) {
-return false;
-}
-</script>
 <?php
 require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
@@ -36,7 +29,7 @@ foreach($res as $domain){
 </select>
 <br></br>
 <label>Password:</label>
-<input id="password" name="password"></input>
+<input id="password" name="password" type="password"></input>
 <input type="submit" value="Go to Site Builder"></input>
 <input id="username" name="username" value="<?php echo $_GET['username'] ?>" hidden></input>
 </form>
