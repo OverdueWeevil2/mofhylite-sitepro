@@ -14,7 +14,7 @@
 						<i class="fa fa-laptop fa-10x"></i>
 					</div>
 					<div class="col-md-4 offset-md-4 px-20 py-5 text-center text-md-right">
-						<a href="sitebuild.php?username=<?php echo $AccountInfo['account_username']?>&password=<?php echo $AccountInfo['account_password']?>" target="_blank" class="btn btn-secondary btn-block my-5 btn-rounded">Site Builder</a>
+						<a href="sitebuild.php?username=<?php echo $AccountInfo['account_username']?>" target="_blank" class="btn btn-secondary btn-block my-5 btn-rounded">Site Builder</a>
 						<a href="cplogin.php?account_id=<?php echo $AccountInfo['account_username']?>" target="_blank" class="btn btn-success text-white btn-block my-5 btn-rounded">Control Panel</a>
 						<a href="https://filemanager.ai/new/#/c/<?php echo str_replace('cpanel', 'ftp', $HostingApi['api_cpanel_url']). '/'. $AccountInfo['account_username'].'/'.base64_encode(json_encode(['t'=>'ftp','c'=>['v'=>1,'p'=>$AccountInfo['account_password']]]));?>" target="_blank" class="btn btn-primary text-white btn-block my-5 btn-rounded"></pre>File Manager</a>
 						<a href="settings.php?account_id=<?php echo $AccountInfo['account_username']?>" target="_blank" class="btn btn-secondary btn-block my-5 btn-rounded">Edit Settings</a>
