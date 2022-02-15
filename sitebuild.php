@@ -23,7 +23,7 @@ else{
 <?php
 use \InfinityFree\MofhClient\Client;
 $client = Client::create();
-$request = $client->getUserDomains(['username' => $_GET['username']]);
+$request = $client->getUserDomains(['username' => $AccountInfo['account_username']]);
 $response = $request->send();
 $res = $response->getDomains();
 foreach($res as $domain){
@@ -44,5 +44,5 @@ foreach($res as $domain){
 <br></br>
 <input id="password" name="password" value="<?php echo $AccountInfo['account_password']?>" hidden></input>
 <input type="submit" value="Go to Site Builder"></input>
-<input id="username" name="username" value="<?php echo $_GET['username'] ?>" hidden></input>
+<input id="username" name="username" value="<?php echo $AccountInfo['account_username']?>" hidden></input>
 </form>
