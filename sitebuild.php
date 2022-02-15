@@ -1,7 +1,21 @@
+<?php $PageInfo = ['title'=>'Site Builder','rel'=>'']; ?>
 <meta name="robots" content="noindex" />
 <?php
 require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
+require_once __DIR__.'/includes/Connect.php';
+require_once __DIR__.'/handler/AreaHandler.php';
+require_once __DIR__.'/handler/CookieHandler.php';
+require_once __DIR__.'/handler/ValidationHandler.php';
+require_once __DIR__.'/includes/Header.php';
+require_once __DIR__.'/includes/Footer.php';
+$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$_GET['username']."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
+if(mysqli_num_rows($sql)>0){
+	echo "";
+}
+else{
+	die("You are not authorized to access this page.");
+}
 ?>
 <form action="site.php" method="POST">
 <label>Domain:</label>
@@ -28,8 +42,7 @@ foreach($res as $domain){
 ?>
 </select>
 <br></br>
-<label>Password (<?php echo $_GET['username']; ?>):</label>
-<input id="password" name="password" type="password"></input>
+<input id="password" name="password" value="<?php echo $AccountInfo['account_password']?>" hidden></input>
 <input type="submit" value="Go to Site Builder"></input>
 <input id="username" name="username" value="<?php echo $_GET['username'] ?>" hidden></input>
 </form>
