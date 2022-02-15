@@ -8,10 +8,11 @@ return false;
 <?php
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
+$tldapi = "http://your-builder-domain-here.com" // if you are using on-premises type your builder domain else type https://site.pro
 $data = array("type" => "external", "username" => $_POST['username'], "password" => $_POST['password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
 $data_string = json_encode($data);
 
-$ch = curl_init('https://site.pro/api/requestLogin');
+$ch = curl_init($tldapi . '/api/requestLogin');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
