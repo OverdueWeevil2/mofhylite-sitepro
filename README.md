@@ -5,7 +5,7 @@
 ```php
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
-$tldapi = "http://your-builder-domain-here.com" // if you are using on-premises type your builder domain else type https://site.pro
+$tldapi = "http://your-builder-domain-here.com"; // if you are using on-premises type your builder domain else type https://site.pro
 ```
 
 3. Upload files to **MOFHY-Lite** directory
