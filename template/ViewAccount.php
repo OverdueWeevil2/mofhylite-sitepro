@@ -68,8 +68,7 @@
 			<div class="col-md-6">
 				<div class="d-flex justify-content-between align-items-center m-5">
 					<b>Server IP:</b>
-					<!-- <span><?php echo $HostingApi['api_server_ip']?></span> -->
-					<span><?php echo gethostbyname($AccountInfo['account_domain']);?></span>
+					<span><?php echo $HostingApi['api_server_ip']?></span>
 				</div>
 			</div>
 			<div class="col-md-6">
