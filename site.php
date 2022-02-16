@@ -11,6 +11,7 @@ require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Navbar.php';
 require_once __DIR__.'/includes/Sidebar.php';
 $sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$_POST['username']."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
+$AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
 	echo "";
 }
