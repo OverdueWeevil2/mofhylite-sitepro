@@ -22,7 +22,7 @@ else{
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
 $tldapi = "http://your-builder-domain-here.com"; // if you are using on-premises type your builder domain else type https://site.pro
-$data = array("type" => "external", "username" => $_POST['username'], "password" => $_POST['password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
+$data = array("type" => "external", "username" => $_POST['username'], "password" => $AccountInfo['account_password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
 $data_string = json_encode($data);
 
 $ch = curl_init($tldapi . '/api/requestLogin');
@@ -42,6 +42,8 @@ $jsan = json_decode($result);
 <?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php if ($jsan->error != null): ?>
 <br><?php echo $jsan->error->message ?></br>
+<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php else: ?>
 <script>location.href = "<?php echo $jsan->url; ?>"</script>
+<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php endif ?>
