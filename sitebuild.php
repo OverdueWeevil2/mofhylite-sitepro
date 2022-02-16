@@ -1,7 +1,7 @@
-<?php require_once __DIR__.'/includes/Header.php'; ?>
-<?php $PageInfo = ['title'=>'Site Builder','rel'=>'']; ?>
 <meta name="robots" content="noindex" />
 <?php
+$PageInfo = ['title'=>'Site Builder','rel'=>''];
+require_once __DIR__.'/includes/Header.php';
 require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Connect.php';
