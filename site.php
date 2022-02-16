@@ -1,10 +1,23 @@
 <meta name="robots" content="noindex" />
-<body oncontextmenu="return false">
-<script>
-document.onkeydown = function(e) {
-return false;
+<?php
+require_once __DIR__.'/modules/autoload.php';
+require_once __DIR__.'/modules/UserInfo/UserInfo.php';
+require_once __DIR__.'/includes/Connect.php';
+require_once __DIR__.'/handler/AreaHandler.php';
+require_once __DIR__.'/handler/CookieHandler.php';
+require_once __DIR__.'/handler/ValidationHandler.php';
+require_once __DIR__.'/includes/Header.php';
+require_once __DIR__.'/includes/Footer.php';
+require_once __DIR__.'/includes/Sidebar.php';
+require_once __DIR__.'/includes/Navbar.php';
+$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$_POST['username']."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
+if(mysqli_num_rows($sql)>0){
+	echo "";
 }
-</script>
+else{
+	die("You are not authorized to access this page.");
+}
+?>
 <?php
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
