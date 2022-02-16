@@ -1,4 +1,5 @@
 # mofhylite-sitepro
+[Site.Pro](https://site.pro) for [MOFHY-Lite](https://github.com/NXTS-Developers/MOFHY-Lite)
 ## Installation
 1. Install ``mofhylite-sitepro-main.zip`` [(link)](https://github.com/OverdueWeevil2/mofhylite-sitepro/archive/refs/heads/main.zip) and extract
 2. Edit site.php and change below lines to Site.Pro API Credentials
