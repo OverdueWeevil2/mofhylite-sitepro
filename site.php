@@ -1,3 +1,4 @@
+<?php require_once __DIR__.'/includes/Header.php'; ?>
 <meta name="robots" content="noindex" />
 <?php
 require_once __DIR__.'/modules/autoload.php';
@@ -6,10 +7,6 @@ require_once __DIR__.'/includes/Connect.php';
 require_once __DIR__.'/handler/AreaHandler.php';
 require_once __DIR__.'/handler/CookieHandler.php';
 require_once __DIR__.'/handler/ValidationHandler.php';
-require_once __DIR__.'/includes/Header.php';
-require_once __DIR__.'/includes/Footer.php';
-require_once __DIR__.'/includes/Navbar.php';
-require_once __DIR__.'/includes/Sidebar.php';
 $sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$_POST['username']."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
 if(mysqli_num_rows($sql)>0){
 	echo "";
@@ -39,9 +36,10 @@ $result = curl_exec($ch);
 
 $jsan = json_decode($result);
 ?>
+<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php if ($jsan->error != null): ?>
 <br><?php echo $jsan->error->message ?></br>
-<br><a href="sitebuild.php?username=<?php echo $_POST['username'] ?>&password=<?php echo $_POST['password'] ?>">Go Back</a></br>
+<br><a href="sitebuild.php?username=<?php echo $_POST['username'] ?>">Go Back</a></br>
 <br><a href="<?php echo $jsan->url; ?>">Proceed</a></br>
 <?php else: ?>
 <script>location.href = "<?php echo $jsan->url; ?>"</script>
