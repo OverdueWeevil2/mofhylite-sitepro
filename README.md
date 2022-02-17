@@ -1,8 +1,12 @@
 # mofhylite-sitepro
 [Site.Pro](https://site.pro) for [MOFHY-Lite](https://github.com/NXTS-Developers/MOFHY-Lite)
+## Requirements
+[Site.Pro Reseller Account](https://site.pro/White-Label/)
+
+[MOFHY-Lite](https://github.com/NXTS-Developers/MOFHY-Lite)
 ## Installation
 1. Install ``mofhylite-sitepro-main.zip`` [(link)](https://github.com/OverdueWeevil2/mofhylite-sitepro/archive/refs/heads/main.zip) and extract
-2. Edit site.php and change below lines to Site.Pro API Credentials
+2. Edit site.php and change below lines to [Site.Pro API Credentials](https://site.pro/My-Licenses/)
 ```php
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
