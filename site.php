@@ -41,7 +41,7 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 $result = curl_exec($ch);
 
 // Add ip
-$data1 = array("action" => "add", "licenseId" => $apiLicense, "brandId" => $apiBrand, "ip" => gethostbyname($AccountInfo['account_domain']););
+$data1 = array("action" => "add", "licenseId" => $apiLicense, "brandId" => $apiBrand, "ip" => gethostbyname($AccountInfo['account_domain']));
 $data_string1 = json_encode($data1);
 
 $ch1 = curl_init($tldapi . '/api/requestLogin');
