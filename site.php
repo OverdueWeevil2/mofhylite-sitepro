@@ -40,11 +40,9 @@ $result = curl_exec($ch);
 
 $jsan = json_decode($result);
 ?>
-<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php if ($jsan->error != null): ?>
 <br><?php echo $jsan->error->message ?></br>
-<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php else: ?>
 <script>location.href = "<?php echo $jsan->url; ?>"</script>
-<?php require_once __DIR__.'/includes/Footer.php'; ?>
 <?php endif ?>
+<?php require_once __DIR__.'/includes/Footer.php'; ?>
