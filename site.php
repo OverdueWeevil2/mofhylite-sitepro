@@ -23,8 +23,6 @@ else{
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
 $tldapi = "http://your-builder-domain-here.com"; // if you are using on-premises type your builder domain else type https://site.pro
-$apiLicense = ""; // License ID
-$apiBrand = ""; // Brand ID
 $data = array("type" => "external", "username" => $_POST['username'], "password" => $AccountInfo['account_password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
 $data_string = json_encode($data);
 
@@ -39,22 +37,6 @@ $headers = array(
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
 $result = curl_exec($ch);
-
-// Add ip
-$data1 = array("action" => "add", "licenseId" => $apiLicense, "brandId" => $apiBrand, "ip" => gethostbyname($AccountInfo['account_domain']));
-$data_string1 = json_encode($data1);
-
-$ch1 = curl_init($tldapi . '/api/ipList');
-curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "POST");
-curl_setopt($ch1, CURLOPT_POSTFIELDS, $data_string1);
-curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch1, CURLOPT_USERPWD, $apiUser.':'.$apiPass);
-$headers1 = array(
-    'Content-type: application/json',
-);
-curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers1);
-
-$result1 = curl_exec($ch1);
 
 $jsan = json_decode($result);
 ?>
