@@ -44,7 +44,7 @@ $result = curl_exec($ch);
 $data1 = array("action" => "add", "licenseId" => $apiLicense, "brandId" => $apiBrand, "ip" => gethostbyname($AccountInfo['account_domain']));
 $data_string1 = json_encode($data1);
 
-$ch1 = curl_init($tldapi . '/api/requestLogin');
+$ch1 = curl_init($tldapi . '/api/ipList');
 curl_setopt($ch1, CURLOPT_CUSTOMREQUEST, "POST");
 curl_setopt($ch1, CURLOPT_POSTFIELDS, $data_string1);
 curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
