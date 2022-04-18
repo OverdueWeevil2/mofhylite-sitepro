@@ -41,7 +41,6 @@ foreach($res as $domain){
 <br></br>
 <label for="dir">Upload Dir:</label>
 <select id="dir" name="dir">
-<option>/htdocs</option>
 <?php
 $ftp = ftp_connect("ftpupload.net");
 $login_result = ftp_login($ftp, $_GET['username'], $AccountInfo['account_password']);
