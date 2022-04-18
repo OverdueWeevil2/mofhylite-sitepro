@@ -19,11 +19,6 @@ else{
 	die("You are not authorized to access this page.");
 }
 ?>
-<?php
-if($AccountInfo['account_status']!=1){
-die('Your account is suspended or inactive!');
-}
-?>
 <form action="site.php" method="POST">
 <label for="domain">Domain:</label>
 <select id="domain" name="domain">
@@ -41,15 +36,10 @@ foreach($res as $domain){
 <br></br>
 <label for="dir">Upload Dir:</label>
 <select id="dir" name="dir">
+<option>/htdocs</option>
 <?php
-$ftp = ftp_connect("ftpupload.net");
-$login_result = ftp_login($ftp, $_GET['username'], $AccountInfo['account_password']);
-$files = ftp_mlsd($conn, "/");
-foreach($files as $file){
-if ($file["type"] == "dir")
-    {
-        echo "<option>/".$file["name"]."</option>";
-    }
+foreach($res as $domain){
+		echo "<option>/" . $domain . "/htdocs</option>";
 }
 ?>
 </select>
