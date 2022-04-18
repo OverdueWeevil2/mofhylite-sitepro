@@ -25,7 +25,7 @@ die('Your account is suspended or inactive!');
 }
 ?>
 <form action="site.php" method="POST">
-<label>Domain:</label>
+<label for="domain">Domain:</label>
 <select id="domain" name="domain">
 <?php
 use \InfinityFree\MofhClient\Client;
@@ -39,12 +39,18 @@ foreach($res as $domain){
 ?>
 </select>
 <br></br>
-<label>Upload Dir:</label>
+<label for="dir">Upload Dir:</label>
 <select id="dir" name="dir">
 <option>/htdocs</option>
 <?php
-foreach($res as $domain){
-		echo "<option>/" . $domain . "/htdocs</option>";
+$ftp = ftp_connect("ftpupload.net");
+$login_result = ftp_login($ftp, $_GET['username'], $AccountInfo['account_password']);
+$files = ftp_mlsd($conn, "/");
+foreach($files as $file){
+if ($file["type"] == "dir")
+    {
+        echo "<option>/".$file["name"]."</option>";
+    }
 }
 ?>
 </select>
