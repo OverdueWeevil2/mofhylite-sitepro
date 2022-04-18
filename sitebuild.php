@@ -1,4 +1,5 @@
-<meta name="robots" content="noindex" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <?php
 $PageInfo = ['title'=>'Site Builder','rel'=>''];
 require_once __DIR__.'/includes/Connect.php';
@@ -19,8 +20,8 @@ else{
 }
 ?>
 <?php
-if(!$AccountInfo['account_status']=='1'){
-die('Your account status is NOT Active!');
+if($AccountInfo['account_status']!='1'){
+die('Your account is suspended or inactive!');
 }
 ?>
 <form action="site.php" method="POST">
