@@ -20,7 +20,7 @@ else{
 }
 ?>
 <?php
-if($AccountInfo['account_status']!='1'){
+if($AccountInfo['account_status']!=1){
 die('Your account is suspended or inactive!');
 }
 ?>
