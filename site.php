@@ -1,4 +1,3 @@
-<meta name="robots" content="noindex" />
 <?php
 require_once __DIR__.'/includes/Connect.php';
 require_once __DIR__.'/handler/AreaHandler.php';
@@ -13,7 +12,6 @@ require_once __DIR__.'/includes/Sidebar.php';
 $sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$_POST['username']."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
 $AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
-	echo "";
 }
 else{
 	die("You are not authorized to access this page.");
@@ -41,8 +39,10 @@ $result = curl_exec($ch);
 $jsan = json_decode($result);
 ?>
 <?php if ($jsan->error != null): ?>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <br><?php echo $jsan->error->message ?></br>
 <?php else: ?>
-<script>location.href = "<?php echo $jsan->url; ?>"</script>
+<?php header("Location: " . $jsan->url); die; ?>
 <?php endif ?>
 <?php require_once __DIR__.'/includes/Footer.php'; ?>
