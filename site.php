@@ -40,7 +40,6 @@ $jsan = json_decode($result);
 ?>
 <?php if ($jsan->error != null): ?>
 <meta name="robots" content="noindex, nofollow, noarchive" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <br><?php echo $jsan->error->message ?></br>
 <?php else: ?>
 <?php header("Location: " . $jsan->url); die; ?>
