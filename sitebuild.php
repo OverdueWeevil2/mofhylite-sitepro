@@ -21,7 +21,7 @@ else{
 }
 ?>
 <?php
-if ($AccountInfo['account_status']!='1') { echo "<h1><strong>Warning! Your account is not active!</strong></h1>"; }
+if ($AccountInfo['account_status']!='1') { die("<h1><strong>Fatal Error! Your account is not active!</strong></h1>"); }
 ?>
 <form action="site.php" method="POST">
 <label for="domain">Domain:</label>
