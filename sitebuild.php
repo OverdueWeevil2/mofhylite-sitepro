@@ -22,9 +22,9 @@ else{
 <?php
 if ($AccountInfo['account_status']!='1') { die("<h1><strong>Fatal Error! Your account is not active!</strong></h1>"); }
 ?>
-<form action="site.php" method="POST">
-<label for="domain">Domain:</label>
-<select id="domain" name="domain">
+<form action="site.php" method="POST" class="form-control">
+<label for="domain" class="form-control">Domain:</label>
+<select id="domain" name="domain" class="form-control">
 <?php
 use \InfinityFree\MofhClient\Client;
 $client = Client::create();
@@ -32,14 +32,14 @@ $request = $client->getUserDomains(['username' => $_GET['username']]);
 $response = $request->send();
 $res = $response->getDomains();
 foreach($res as $domain){
-		echo "<option>" . $domain . "</option>";
+		echo "<option class='form-control'>" . $domain . "</option>";
 }
 ?>
 </select>
 <br></br>
-<label for="dir">Upload Dir:</label>
-<select id="dir" name="dir">
-<option>/htdocs</option>
+<label for="dir" class="form-control">Upload Dir:</label>
+<select id="dir" name="dir" class="form-control">
+<option class='form-control'>/htdocs</option>
 <?php
 $conn = ftp_connect("ftpupload.net");
 $login = ftp_login($conn, $_GET['username'], $AccountInfo['account_password']);
@@ -50,14 +50,14 @@ foreach ($files as $file)
     if ($file["type"] == "dir")
     {
 		if (($file["name"] != "htdocs") && ($file["name"] != ".cpanel") && ($file["name"] != ".pki") && ($file["name"] != ".softaculous") && ($file["name"] != "mail")) {
-		echo "<option>/".$file["name"]."/htdocs</option>";
+		echo "<option class='form-control'>/".$file["name"]."/htdocs</option>";
 		}
     }
 } 
 ?>
 </select>
 <br></br>
-<input type="submit" value="Go to Site Builder"></input>
+<input type="submit" value="Go to Site Builder" class="form-control"></input>
 <input id="username" name="username" value="<?php echo htmlentities($_GET['username'], ENT_QUOTES); ?>" hidden></input>
 </form>
 <?php require_once __DIR__.'/includes/Footer.php'; ?>
