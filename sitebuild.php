@@ -13,11 +13,15 @@ require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Navbar.php';
 require_once __DIR__.'/includes/Sidebar.php';
 $sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$connect->real_escape_string($_GET['username'])."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
+$AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
 }
 else{
 	die("You are not authorized to access this page.");
 }
+?>
+<?php
+if ($AccountInfo['account_status']!='1') { echo "<h1><strong>Warning! Your account is not active!</strong></h1>"; }
 ?>
 <form action="site.php" method="POST">
 <label for="domain">Domain:</label>
@@ -38,9 +42,19 @@ foreach($res as $domain){
 <select id="dir" name="dir">
 <option>/htdocs</option>
 <?php
-foreach($res as $domain){
-		echo "<option>/" . $domain . "/htdocs</option>";
-}
+$conn = ftp_connect("ftpupload.net");
+$login = ftp_login($conn, $_GET['username'], $AccountInfo['account_password']);
+$files = ftp_mlsd($conn, "/");
+
+foreach ($files as $file)
+{ 
+    if ($file["type"] == "dir")
+    {
+		if (($file["name"] != "htdocs") && ($file["name"] != ".cpanel") && ($file["name"] != ".pki") && ($file["name"] != ".softaculous") && ($file["name"] != "mail")) {
+		echo "<option>/".$file["name"]."/htdocs</option>";
+		}
+    }
+} 
 ?>
 </select>
 <br></br>
