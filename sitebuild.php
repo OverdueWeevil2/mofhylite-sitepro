@@ -22,7 +22,7 @@ else{
 <?php
 if ($AccountInfo['account_status']!='1') { die("<h1><strong>Fatal Error! Your account is not active!</strong></h1>"); }
 ?>
-<form action="site.php" method="POST" class="form-control">
+<form action="site.php" method="POST">
 <label for="domain" class="form-control">Domain:</label>
 <select id="domain" name="domain" class="form-control">
 <?php
