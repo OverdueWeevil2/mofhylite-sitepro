@@ -11,7 +11,7 @@ require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Navbar.php';
 require_once __DIR__.'/includes/Sidebar.php';
-$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$connect->real_escape_string($_GET['username'])."' AND `account_for`='".$ClientInfo['hosting_client_key']."'");
+$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$connect->real_escape_string($_GET['username'])."' AND `account_for`='".$connect->real_escape_string($ClientInfo['hosting_client_key'])."'");
 $AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
 }
