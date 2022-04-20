@@ -42,7 +42,7 @@ foreach($res as $domain){
 <select id="dir" name="dir" class="form-control">
 <option class='form-control'>/htdocs</option>
 <?php
-$conn = ftp_connect("ftpupload.net");
+$conn = ftp_ssl_connect("ftpupload.net");
 $login = ftp_login($conn, $_GET['username'], $AccountInfo['account_password']);
 $files = ftp_mlsd($conn, "/");
 
