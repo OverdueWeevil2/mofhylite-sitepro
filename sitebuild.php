@@ -11,7 +11,9 @@ require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Navbar.php';
 require_once __DIR__.'/includes/Sidebar.php';
-$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$connect->real_escape_string($_GET['username'])."' AND `account_for`='".$connect->real_escape_string($ClientInfo['hosting_client_key'])."'");
+$usernamme = $_GET['username'];
+$key = $ClientInfo['hosting_client_key'];
+$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='{$usernamme}' AND `account_for`='{$key}'");
 $AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
 	// Nothing
@@ -29,7 +31,7 @@ if ($AccountInfo['account_status']!='1') { die("<h1><strong>Fatal Error! Your ac
 <?php
 use \InfinityFree\MofhClient\Client;
 $client = Client::create();
-$request = $client->getUserDomains(['username' => $_GET['username']]);
+$request = $client->getUserDomains(['username' => $usernamme]);
 $response = $request->send();
 $res = $response->getDomains();
 foreach($res as $domain){
@@ -43,7 +45,7 @@ foreach($res as $domain){
 <option class='form-control'>/htdocs</option>
 <?php
 $conn = ftp_ssl_connect("ftpupload.net");
-$login = ftp_login($conn, $_GET['username'], $AccountInfo['account_password']);
+$login = ftp_login($conn, $usernamme, $AccountInfo['account_password']);
 $files = ftp_mlsd($conn, "/");
 
 foreach ($files as $file)
@@ -57,6 +59,6 @@ foreach ($files as $file)
 </select>
 <br></br>
 <input type="submit" value="Go to Site Builder" class="form-control"></input>
-<input id="username" name="username" value="<?php echo htmlentities($_GET['username'], ENT_QUOTES); ?>" hidden></input>
+<input id="username" name="username" value="<?php echo htmlentities($usernamme, ENT_QUOTES); ?>" hidden></input>
 </form>
 <?php require_once __DIR__.'/includes/Footer.php'; ?>
