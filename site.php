@@ -9,7 +9,9 @@ require_once __DIR__.'/modules/autoload.php';
 require_once __DIR__.'/modules/UserInfo/UserInfo.php';
 require_once __DIR__.'/includes/Navbar.php';
 require_once __DIR__.'/includes/Sidebar.php';
-$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='".$connect->real_escape_string($_POST['username'])."' AND `account_for`='".$connect->real_escape_string($ClientInfo['hosting_client_key'])."'");
+$usernamme = $_GET['username'];
+$key = $ClientInfo['hosting_client_key'];
+$sql = mysqli_query($connect,"SELECT * FROM `hosting_account` WHERE `account_username`='{$usernamme}' AND `account_for`='{$key}'");
 $AccountInfo = mysqli_fetch_assoc($sql);
 if(mysqli_num_rows($sql)>0){
 	// Nothing
@@ -22,7 +24,7 @@ else{
 $apiUser = "SITE-PRO-API-USERNAME-HERE"; // Site.Pro API Username
 $apiPass = "SITE-PRO-API-PASSWORD-HERE"; // Site.Pro API Password
 $tldapi = "http://your-builder-domain-here.com"; // if you are using on-premises type your builder domain else type https://site.pro
-$data = array("type" => "external", "username" => $_POST['username'], "password" => $AccountInfo['account_password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
+$data = array("type" => "external", "username" => $usernamme, "password" => $AccountInfo['account_password'], "domain" => $_POST['domain'], "baseDomain" => $_POST['domain'], "apiUrl" => "ftpupload.net", "uploadDir" => $_POST['dir']);
 $data_string = json_encode($data);
 
 $ch = curl_init($tldapi . '/api/requestLogin');
