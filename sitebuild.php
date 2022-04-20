@@ -48,11 +48,9 @@ $files = ftp_mlsd($conn, "/");
 
 foreach ($files as $file)
 { 
-    if ($file["type"] == "dir")
+    if ($file["type"] == "dir" && ($file["name"] != "htdocs") && ($file["name"] != ".cpanel") && ($file["name"] != ".pki") && ($file["name"] != ".softaculous") && ($file["name"] != "mail"))
     {
-		if (($file["name"] != "htdocs") && ($file["name"] != ".cpanel") && ($file["name"] != ".pki") && ($file["name"] != ".softaculous") && ($file["name"] != "mail")) {
 		echo "<option class='form-control'>/".$file["name"]."/htdocs</option>";
-		}
     }
 } 
 ?>
